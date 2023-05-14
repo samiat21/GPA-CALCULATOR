@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPA calculator</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+  </head>
+  <body
+    class="bg-[url('https://static.vecteezy.com/system/resources/thumbnails/001/311/554/small/education-and-back-to-school-concept-free-vector.jpg')] bg-no-repeat bg-cover"
+  >
+    <main class="flex flex-col justify-center items-center mt-5px]">
+      <h2 class="font-semibold text-[50px] text-white font-sans">
+        Calculate your GPA!
+      </h2>
+
+      <table border="1" class="border-separate border-spacing-[20px]">
+        <thead>
+          <tr>
+            <th class="text-[#2962ff] bg-white">Subjects</th>
+            <th class="text-[#2962ff] bg-white">Score</th>
+            <th class="text-[#2962ff] bg-white">Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="text-[#2962ff]">HRT 501</th>
+            <td>
+              <input type="number" name="hrt" id="hrt" class="text-[#2962ff]" />
+            </td>
+            <td id="one" class="text-[#2962ff] border-2 bg-white"></td>
+          </tr>
+          <tr>
+            <th class="text-[#2962ff]">FST 503</th>
+            <td>
+              <input type="number" name="fst" id="fst" class="text-[#2962ff]" />
+            </td>
+            <td id="two" class="text-[#2962ff] border-2 bg-white"></td>
+          </tr>
+          <tr>
+            <th class="text-[#2962ff]">SOS 501</th>
+            <td>
+              <input type="number" name="sos" id="sos" class="text-[#2962ff]" />
+            </td>
+            <td id="three" class="text-[#2962ff] border-2 bg-white"></td>
+          </tr>
+          <tr>
+            <th class="text-[#2962ff]">PCP 501</th>
+            <td>
+              <input type="number" name="pcp" id="pcp" class="text-[#2962ff]" />
+            </td>
+            <td id="four" class="text-[#2962ff] border-2 bg-white"></td>
+          </tr>
+          <tr>
+            <th class="text-[#2962ff]">CHM 501</th>
+            <td>
+              <input type="number" name="chm" id="chm" class="text-[#2962ff]" />
+            </td>
+            <td id="five" class="text-[#2962ff] border-2 bg-white"></td>
+          </tr>
+          <tr>
+            <th class="text-[#2962ff]">PHS 501</th>
+            <td>
+              <input type="number" name="phs" id="phs" class="text-[#2962ff]" />
+            </td>
+            <td id="six" class="text-[#2962ff] border-2 bg-white"></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2">
+              <button
+                type="submit"
+                class="bg-[#2962ff] text-white border-2 rounded-xl px-5"
+              >
+                Check Average
+              </button>
+            </td>
+            <td id="avg" class="text-[#2962ff] border-2 bg-white"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <p class="text-white"></p>
+    </main>
+
+    <script>
+      const hrt = document.getElementById("hrt");
+      const fst = document.getElementById("fst");
+      const sos = document.getElementById("sos");
+      const pcp = document.getElementById("pcp");
+      const chm = document.getElementById("chm");
+      const phs = document.getElementById("phs");
+      const para = document.querySelector("p");
+      const btn = document.querySelector("button");
+      const course1 = document.getElementById("one");
+      const course2 = document.getElementById("two");
+      const course3 = document.getElementById("three");
+      const course4 = document.getElementById("four");
+      const course5 = document.getElementById("five");
+      const course6 = document.getElementById("six");
+      const avg = document.getElementById("avg");
+
+      function gpa() {
+        let hr = hrt.value;
+        let fs = fst.value;
+        let so = sos.value;
+        let pc = pcp.value;
+        let ch = chm.value;
+        let ph = phs.value;
+        let status;
+        let val =
+          (Number(hr) +
+            Number(fs) +
+            Number(so) +
+            Number(pc) +
+            Number(ch) +
+            Number(ph)) /
+          6;
+
+        avg.textContent = val.toFixed(2);
+
+        if (val >= 75) {
+          status = "First class";
+        } else if (val >= 69) {
+          status = "Second Class Upper";
+        } else if (val >= 64) {
+          status = "Second Class Lower";
+        } else if (val >= 50) {
+          status = "Third class";
+        } else {
+          status = "Pass";
+        }
+
+        hr >= 75
+          ? (course1.textContent = "A")
+          : hr >= 69
+          ? (course1.textContent = "B")
+          : hr >= 50
+          ? (course1.textContent = "C")
+          : hr >= 50
+          ? (course1.textContent = "D")
+          : (course1.textContent = "F");
+
+        fs >= 75
+          ? (course2.textContent = "A")
+          : fs >= 69
+          ? (course2.textContent = "B")
+          : fs >= 64
+          ? (course2.textContent = "C")
+          : fs >= 50
+          ? (course2.textContent = "D")
+          : (course2.textContent = "F");
+
+        so >= 75
+          ? (course3.textContent = "A")
+          : so >= 69
+          ? (course3.textContent = "B")
+          : so >= 64
+          ? (course3.textContent = "C")
+          : so >= 50
+          ? (course3.textContent = "D")
+          : (course3.textContent = "F");
+
+        pc >= 75
+          ? (course4.textContent = "A")
+          : pc >= 69
+          ? (course4.textContent = "B")
+          : pc >= 64
+          ? (course4.textContent = "C")
+          : pc >= 50
+          ? (course4.textContent = "D")
+          : (course4.textContent = "F");
+
+        ch >= 75
+          ? (course5.textContent = "A")
+          : ch >= 69
+          ? (course5.textContent = "B")
+          : ch >= 64
+          ? (course5.textContent = "C")
+          : ch >= 50
+          ? (course5.textContent = "D")
+          : (course5.textContent = "F");
+
+        ph >= 75
+          ? (course6.textContent = "A")
+          : ph >= 69
+          ? (course6.textContent = "B")
+          : ph >= 64
+          ? (course6.textContent = "C")
+          : ph >= 50
+          ? (course6.textContent = "D")
+          : (course6.textContent = "F");
+
+        return (para.textContent = `Your average score is ${val.toFixed(
+          2
+        )} and your grade is ${status}`);
+      }
+
+      btn.addEventListener("click", gpa);
+    </script>
+  </body>
+</html>
